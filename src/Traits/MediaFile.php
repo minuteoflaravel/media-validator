@@ -25,7 +25,7 @@ trait MediaFile {
 
     private function isAudio($file)
     {
-        if (method_exists($file, 'getS3StreamAccessiblePath')) {
+        if (method_exists($file, 'hasMacro') && $file::hasMacro('getS3StreamAccessiblePath')) {
             $file = $file->getS3StreamAccessiblePath();
         } elseif (method_exists($file, 'getRealPath')) {
             $file = $file->getRealPath();
@@ -36,7 +36,7 @@ trait MediaFile {
 
     private function isVideo($file)
     {
-        if (method_exists($file, 'getS3StreamAccessiblePath')) {
+        if (method_exists($file, 'hasMacro') && $file::hasMacro('getS3StreamAccessiblePath')) {
             $file = $file->getS3StreamAccessiblePath();
         } elseif (method_exists($file, 'getRealPath')) {
             $file = $file->getRealPath();
